@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "purpose": "SHOPMAX99 backend migration contract",
+  "entities": {
+    "users": {"id":"uuid","role":"customer|seller|admin|seller_support|customer_support","name":"string","email":"string|null","phone":"string|null","status":"active|blocked|pending","createdAt":"datetime","updatedAt":"datetime"},
+    "sellers": {"id":"uuid","userId":"fk(users.id)","shopName":"string","status":"pending|approved|blocked|held|rejected","kycStatus":"string","bankDetails":"json","createdAt":"datetime","updatedAt":"datetime"},
+    "products": {"id":"uuid","sellerId":"fk(sellers.id)","name":"string","category":"string","description":"text","sellerPrice":"decimal","customerPrice":"decimal","stock":"integer","status":"pending|approved|rejected|blocked","images":"json[]","createdAt":"datetime","updatedAt":"datetime"},
+    "orders": {"id":"uuid","customerId":"fk(users.id)","status":"string","total":"decimal","items":"json[]","createdAt":"datetime","updatedAt":"datetime"},
+    "transactions": {"id":"uuid","bankAccountId":"fk(company_bank_accounts.id)","type":"credit|debit","category":"order|payout|charge|seller|courier|platform|other","amount":"decimal","partyId":"uuid|null","reference":"string","status":"pending|completed|failed|reversed","metadata":"json","createdAt":"datetime"},
+    "company_bank_accounts": {"id":"uuid","accountType":"current","accountHolderName":"string","bankName":"string","accountNumber":"encrypted string","ifsc":"string","branch":"string|null","upiId":"string|null","status":"active|inactive","createdAt":"datetime","updatedAt":"datetime"},
+    "support_staff": {"id":"uuid","userId":"fk(users.id)","role":"seller_support|customer_support","username":"string","passwordHash":"string","status":"active|blocked","createdAt":"datetime","lastLoginAt":"datetime|null"},
+    "support_requests": {"id":"uuid","requestedBy":"fk(support_staff.id)","type":"product_update|seller_profile|seller_status|customer_profile|customer_status|order_status","targetId":"uuid","beforeSnapshot":"json","proposedSnapshot":"json","status":"pending|accepted|rejected|completed|reverted","reviewedBy":"fk(users.id)|null","reviewedAt":"datetime|null","createdAt":"datetime","updatedAt":"datetime"},
+    "support_audit_logs": {"id":"uuid","actorId":"uuid","actorRole":"string","action":"string","targetType":"string","targetId":"uuid|null","metadata":"json","createdAt":"datetime"},
+    "staff_payments": {"id":"uuid","recipientId":"uuid","recipientType":"support_staff|seller|courier","bankAccountId":"fk(company_bank_accounts.id)","amount":"decimal","reference":"string","status":"pending|completed|failed|reversed","createdAt":"datetime"}
+  },
+  "security": {
+    "passwords": "argon2id/bcrypt hashes only; never plaintext",
+    "sessions": "server-side or signed secure HttpOnly cookies",
+    "otp": "server-generated, short-lived, single-use, rate-limited; never stored in browser localStorage",
+    "banking": "never store raw banking credentials or payment gateway secrets in browser; use encrypted server-side secrets",
+    "supportChanges": "support staff can propose only; Admin approval is required before mutation"
+  }
+}

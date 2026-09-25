@@ -1,0 +1,2047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ShopMax99 - Online Shopping</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+
+  </head>
+
+  <body>
+    <!-- =========================================================
+         MAIN APPLICATION
+    ========================================================== -->
+
+    <div id="app">
+      <!-- =====================================================
+             CUSTOMER APPLICATION
+        ====================================================== -->
+
+      <div id="customerApp" class="role-app">
+        <!-- CUSTOMER HEADER -->
+        <header class="customer-header">
+          <!-- TOP HEADER -->
+          <div class="header-main">
+            <!-- LOGO -->
+            <div
+              class="brand-logo"
+              id="shopLogo"
+              data-action="home"
+              role="button"
+              tabindex="0"
+            >
+              <img
+                src="image/logo.max99black.jpg"
+                alt="ShopMax99"
+                class="shopmax99-header-logo"
+              />
+            </div>
+
+            <!-- SEARCH -->
+            <div class="search-wrapper">
+              <input
+                type="search"
+                id="productSearch"
+                placeholder="Search products, categories and more..."
+                autocomplete="off"
+              />
+
+              <button type="button" id="searchBtn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+
+            <!-- HEADER ACTIONS -->
+            <div class="header-actions">
+              <!-- WISHLIST -->
+              <button
+                type="button"
+                class="header-icon-btn wishlist-header-btn"
+                id="wishlistHeaderBtn"
+                title="My Wishlist"
+                aria-label="My Wishlist"
+                data-customer-page="wishlist"
+              >
+                <i class="fa-regular fa-heart"></i>
+                <span class="header-badge" id="wishlistCount">0</span>
+              </button>
+
+              <!-- CART -->
+              <button
+                type="button"
+                class="header-icon-btn cart-header-btn"
+                id="cartHeaderBtn"
+                title="Cart"
+                aria-label="Shopping Cart"
+                data-customer-page="cart"
+              >
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="header-badge" id="cartCount">0</span>
+              </button>
+
+              <!-- THEME -->
+              <button
+                type="button"
+                class="header-icon-btn theme-toggle-btn"
+                id="themeToggleBtn"
+                title="Switch theme"
+                aria-label="Switch light and dark mode"
+              >
+                <i class="fa-solid fa-moon" id="themeToggleIcon"></i>
+              </button>
+
+              <!-- ACCOUNT -->
+              <button type="button" class="account-btn" id="accountBtn">
+                <i class="fa-regular fa-user"></i>
+
+                <span class="account-text">
+                  <small>Hello,</small>
+                  <strong id="accountName">Sign in</strong>
+                </span>
+
+                <i class="fa-solid fa-chevron-down account-arrow"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- CATEGORY BAR -->
+          <nav class="category-bar" id="categoryBar">
+            <button
+              type="button"
+              class="category-link active"
+              data-category="all"
+            >
+              <i class="fa-solid fa-layer-group"></i>
+              All Categories
+            </button>
+
+            <button type="button" class="category-link" data-category="men">
+              Men
+            </button>
+
+            <button type="button" class="category-link" data-category="women">
+              Women
+            </button>
+
+            <button type="button" class="category-link" data-category="kids">
+              Kids
+            </button>
+
+            <button type="button" class="category-link" data-category="home">
+              Home & Living
+            </button>
+
+            <button type="button" class="category-link" data-category="beauty">
+              Beauty
+            </button>
+
+            <button type="button" class="category-link" data-category="mobile">
+              Mobile
+            </button>
+
+            <button type="button" class="category-link" data-category="fitness">
+              Fitness
+            </button>
+
+            <button type="button" class="category-link" data-category="more">
+              More
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </nav>
+        </header>
+
+        <!-- CUSTOMER BODY -->
+        <div class="customer-layout">
+          <!-- CUSTOMER SIDEBAR -->
+          <aside class="customer-sidebar" id="customerSidebar">
+            <div class="sidebar-user-card">
+              <div class="sidebar-avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+
+              <div>
+                <span class="sidebar-greeting">Welcome</span>
+                <strong id="sidebarUserName">ShopMax User</strong>
+              </div>
+            </div>
+
+            <!-- CUSTOMER NAVIGATION -->
+            <nav class="customer-nav">
+              <button
+                type="button"
+                class="customer-nav-item active"
+                data-customer-page="home"
+              >
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+              </button>
+
+              <button
+                type="button"
+                class="customer-nav-item"
+                data-customer-page="categories"
+              >
+                <i class="fa-solid fa-table-cells-large"></i>
+                <span>Categories</span>
+              </button>
+
+              <button
+                type="button"
+                class="customer-nav-item"
+                data-customer-page="orders"
+              >
+                <i class="fa-solid fa-box"></i>
+                <span>My Orders</span>
+              </button>
+
+              <button
+                type="button"
+                class="customer-nav-item"
+                data-customer-page="cart"
+              >
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Cart</span>
+                <span class="nav-count" id="sidebarCartCount">0</span>
+              </button>
+
+              <button
+                type="button"
+                class="customer-nav-item"
+                data-customer-page="wishlist"
+              >
+                <i class="fa-regular fa-heart"></i>
+                <span>My Wishlist</span>
+                <span class="nav-count" id="sidebarWishlistCount">0</span>
+              </button>
+
+              <button
+                type="button"
+                class="customer-nav-item"
+                data-customer-page="profile"
+              >
+                <i class="fa-regular fa-user"></i>
+                <span>My Profile</span>
+              </button>
+            </nav>
+
+            <!-- SELLER REGISTRATION -->
+            <div class="seller-register-card">
+              <div class="seller-register-icon">
+                <i class="fa-solid fa-store"></i>
+              </div>
+
+              <div class="seller-register-content">
+                <strong>Want to sell?</strong>
+
+                <span> Start selling your products on ShopMax99 </span>
+
+                <button
+                  type="button"
+                  id="openSellerRegister"
+                  class="seller-register-link"
+                >
+                  New Seller? Register Here
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </aside>
+
+          <!-- CUSTOMER CONTENT -->
+          <main class="customer-content" id="customerContent">
+            <!-- =========================================
+                         CUSTOMER HOME
+                    ========================================== -->
+
+            <section
+              id="customerHome"
+              class="customer-page active-page"
+              data-page="home"
+            >
+              <!-- HERO -->
+              <section class="hero-banner">
+                <div class="hero-content">
+                  <span class="hero-small-text"> SHOP SMART. SHOP EASY. </span>
+
+                  <h1>
+                    Everything You Need,
+                    <span>All in One Place.</span>
+                  </h1>
+
+                  <p>Discover products at prices you will love.</p>
+
+                  <button
+                    type="button"
+                    class="primary-btn hero-shop-btn"
+                    data-customer-page="categories"
+                  >
+                    Shop Now
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+
+                <div class="hero-decoration">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+              </section>
+
+              <!-- QUICK CATEGORIES -->
+              <section class="home-section">
+                <div class="section-heading">
+                  <div>
+                    <span class="section-kicker"> EXPLORE </span>
+
+                    <h2>Shop by Category</h2>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="text-btn"
+                    data-customer-page="categories"
+                  >
+                    View All
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+
+                <div class="category-cards" id="homeCategoryCards">
+                  <button
+                    type="button"
+                    class="category-card"
+                    data-category="men"
+                  >
+                    <div class="category-card-icon">
+                      <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <strong>Men</strong>
+                    <span>Fashion & More</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="category-card"
+                    data-category="women"
+                  >
+                    <div class="category-card-icon">
+                      <i class="fa-solid fa-person-dress"></i>
+                    </div>
+                    <strong>Women</strong>
+                    <span>Fashion & More</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="category-card"
+                    data-category="kids"
+                  >
+                    <div class="category-card-icon">
+                      <i class="fa-solid fa-child"></i>
+                    </div>
+                    <strong>Kids</strong>
+                    <span>Fun & Fashion</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="category-card"
+                    data-category="home"
+                  >
+                    <div class="category-card-icon">
+                      <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <strong>Home</strong>
+                    <span>Home & Living</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="category-card"
+                    data-category="beauty"
+                  >
+                    <div class="category-card-icon">
+                      <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <strong>Beauty</strong>
+                    <span>Beauty Products</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="category-card"
+                    data-category="fitness"
+                  >
+                    <div class="category-card-icon">
+                      <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <strong>Fitness</strong>
+                    <span>Health & Fitness</span>
+                  </button>
+                </div>
+              </section>
+
+              <!-- PRODUCTS -->
+              <section class="home-section">
+                <div class="section-heading">
+                  <div>
+                    <span class="section-kicker"> SHOPMAX99 </span>
+
+                    <h2>Latest Products</h2>
+                  </div>
+
+                  <span class="product-result-text" id="productResultText">
+                    Showing all products
+                  </span>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                  <!-- Products will be rendered by customer.js -->
+                </div>
+
+                <div class="empty-state" id="productEmptyState" hidden>
+                  <div class="empty-state-icon">
+                    <i class="fa-solid fa-box-open"></i>
+                  </div>
+
+                  <h3>No products found</h3>
+
+                  <p>Try another search or category.</p>
+
+                  <button
+                    type="button"
+                    class="secondary-btn"
+                    data-category="all"
+                  >
+                    View All Products
+                  </button>
+                </div>
+              </section>
+            </section>
+
+            <!-- =========================================
+                         CATEGORIES PAGE
+                    ========================================== -->
+
+            <section
+              id="customerCategories"
+              class="customer-page"
+              data-page="categories"
+              hidden
+            >
+              <div class="page-header">
+                <div>
+                  <span class="section-kicker"> EXPLORE </span>
+
+                  <h1>All Categories</h1>
+
+                  <p>Browse products by category.</p>
+                </div>
+              </div>
+
+              <div class="all-category-grid">
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="men"
+                >
+                  <i class="fa-solid fa-shirt"></i>
+                  <strong>Men</strong>
+                  <span>Fashion, clothing and accessories</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="women"
+                >
+                  <i class="fa-solid fa-person-dress"></i>
+                  <strong>Women</strong>
+                  <span>Fashion, clothing and accessories</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="kids"
+                >
+                  <i class="fa-solid fa-child"></i>
+                  <strong>Kids</strong>
+                  <span>Products for kids</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="home"
+                >
+                  <i class="fa-solid fa-couch"></i>
+                  <strong>Home & Living</strong>
+                  <span>Make your home better</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="beauty"
+                >
+                  <i class="fa-solid fa-spa"></i>
+                  <strong>Beauty</strong>
+                  <span>Beauty and personal care</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="mobile"
+                >
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <strong>Mobile</strong>
+                  <span>Mobile and accessories</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="fitness"
+                >
+                  <i class="fa-solid fa-dumbbell"></i>
+                  <strong>Fitness</strong>
+                  <span>Fitness and workout products</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="large-category-card"
+                  data-category="more"
+                >
+                  <i class="fa-solid fa-ellipsis"></i>
+                  <strong>More</strong>
+                  <span>Explore more categories</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- =========================================
+                         ORDERS PAGE
+                    ========================================== -->
+
+            <section
+              id="customerOrders"
+              class="customer-page"
+              data-page="orders"
+              hidden
+            >
+              <div class="page-header">
+                <div>
+                  <span class="section-kicker"> ACCOUNT </span>
+
+                  <h1>My Orders</h1>
+
+                  <p>Track and manage your orders.</p>
+                </div>
+              </div>
+
+              <div class="orders-container" id="customerOrdersList">
+                <!-- Orders rendered by customer.js -->
+              </div>
+
+              <div class="empty-state" id="ordersEmptyState">
+                <div class="empty-state-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+
+                <h3>No orders yet</h3>
+
+                <p>Your placed orders will appear here.</p>
+
+                <button
+                  type="button"
+                  class="primary-btn"
+                  data-customer-page="home"
+                >
+                  Start Shopping
+                </button>
+              </div>
+            </section>
+
+            <!-- =========================================
+                         CHECKOUT PAGE
+                    ========================================== -->
+
+            <section
+              id="customerCheckout"
+              class="customer-page checkout-page"
+              data-page="checkout"
+              hidden
+            >
+              <div class="page-header">
+                <div>
+                  <span class="section-kicker"> CHECKOUT </span>
+                  <h1>Complete Your Order</h1>
+                  <p>Enter delivery details and choose your payment method.</p>
+                </div>
+              </div>
+
+              <form id="checkoutForm" class="checkout-form">
+                <div class="checkout-grid">
+                  <div class="checkout-main">
+                    <section class="checkout-card">
+                      <div class="checkout-card-head">
+                        <div>
+                          <span class="checkout-step">1</span>
+                          <div>
+                            <h2>Delivery Details</h2>
+                            <p>Where should we deliver your order?</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="checkout-fields">
+                        <label
+                          >Full Name
+                          <input
+                            type="text"
+                            name="fullName"
+                            id="checkoutFullName"
+                            placeholder="Enter your full name"
+                            required
+                          />
+                        </label>
+                        <label
+                          >Mobile Number
+                          <input
+                            type="tel"
+                            name="phone"
+                            id="checkoutPhone"
+                            placeholder="10-digit mobile number"
+                            inputmode="numeric"
+                            pattern="[0-9]{10}"
+                            required
+                          />
+                        </label>
+                        <label class="full-field"
+                          >Address
+                          <textarea
+                            name="address"
+                            id="checkoutAddress"
+                            rows="3"
+                            placeholder="House / flat, street, area"
+                            required
+                          ></textarea>
+                        </label>
+                        <label
+                          >City
+                          <input
+                            type="text"
+                            name="city"
+                            id="checkoutCity"
+                            placeholder="City"
+                            required
+                          />
+                        </label>
+                        <label
+                          >PIN Code
+                          <input
+                            type="text"
+                            name="pincode"
+                            id="checkoutPincode"
+                            placeholder="6-digit PIN"
+                            inputmode="numeric"
+                            pattern="[0-9]{6}"
+                            required
+                          />
+                        </label>
+                      </div>
+                    </section>
+
+                    <section class="checkout-card">
+                      <div class="checkout-card-head">
+                        <div>
+                          <span class="checkout-step">2</span>
+                          <div>
+                            <h2>Payment Method</h2>
+                            <p>Choose how you want to pay.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="payment-options">
+                        <label class="payment-option">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="UPI"
+                            required
+                          />
+                          <span class="payment-icon"
+                            ><i class="fa-solid fa-mobile-screen-button"></i
+                          ></span>
+                          <span
+                            ><strong>UPI</strong
+                            ><small
+                              >Google Pay, PhonePe, Paytm etc.</small
+                            ></span
+                          >
+                        </label>
+                        <label class="payment-option">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="COD"
+                          />
+                          <span class="payment-icon"
+                            ><i class="fa-solid fa-money-bill-wave"></i
+                          ></span>
+                          <span
+                            ><strong>Cash on Delivery</strong
+                            ><small
+                              >Pay when your order is delivered</small
+                            ></span
+                          >
+                        </label>
+                        <label class="payment-option">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="Net Banking"
+                          />
+                          <span class="payment-icon"
+                            ><i class="fa-solid fa-building-columns"></i
+                          ></span>
+                          <span
+                            ><strong>Net Banking</strong
+                            ><small>Pay using your bank account</small></span
+                          >
+                        </label>
+                        <label class="payment-option">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="Credit/Debit Card"
+                          />
+                          <span class="payment-icon"
+                            ><i class="fa-solid fa-credit-card"></i
+                          ></span>
+                          <span
+                            ><strong>Credit / Debit Card</strong
+                            ><small
+                              >Visa, Mastercard and other cards</small
+                            ></span
+                          >
+                        </label>
+                      </div>
+
+                      <div class="payment-notice">
+                        <i class="fa-solid fa-lock"></i>
+                        <span
+                          >Online payment options are shown here. A live payment
+                          gateway must be connected before real
+                          UPI/card/net-banking payments can be collected.</span
+                        >
+                      </div>
+                    </section>
+                  </div>
+
+                  <aside class="checkout-summary checkout-card">
+                    <h2>Order Summary</h2>
+                    <div id="checkoutItems" class="checkout-items"></div>
+                    <div class="checkout-summary-row">
+                      <span>Subtotal</span
+                      ><strong id="checkoutSubtotal">₹0</strong>
+                    </div>
+                    <div class="checkout-summary-row">
+                      <span>Delivery</span><strong>FREE</strong>
+                    </div>
+                    <div class="checkout-summary-total">
+                      <span>Total</span><strong id="checkoutTotal">₹0</strong>
+                    </div>
+                    <button
+                      type="submit"
+                      class="primary-btn checkout-place-btn"
+                    >
+                      Place Order <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="checkout-back-btn"
+                      id="backToCartBtn"
+                    >
+                      ← Back to Cart
+                    </button>
+                  </aside>
+                </div>
+              </form>
+            </section>
+
+            <!-- =========================================
+                         CART PAGE
+                    ========================================== -->
+
+            <section
+              id="customerCart"
+              class="customer-page"
+              data-page="cart"
+              hidden
+            >
+              <div class="page-header">
+                <div>
+                  <span class="section-kicker"> SHOPPING </span>
+
+                  <h1>My Cart</h1>
+
+                  <p>Review your items before checkout.</p>
+                </div>
+              </div>
+
+              <div class="cart-layout">
+                <div class="cart-items" id="cartItems">
+                  <!-- Cart items rendered by app.js -->
+                </div>
+
+                <aside class="cart-summary">
+                  <h3>Order Summary</h3>
+
+                  <div class="summary-row">
+                    <span>Items</span>
+                    <strong id="summaryItems">0</strong>
+                  </div>
+
+                  <div class="summary-row">
+                    <span>Subtotal</span>
+                    <strong id="summarySubtotal">₹0</strong>
+                  </div>
+
+                  <div class="summary-row">
+                    <span>Delivery</span>
+                    <strong id="summaryDelivery">FREE</strong>
+                  </div>
+
+                  <div class="summary-divider"></div>
+
+                  <div class="summary-total">
+                    <span>Total</span>
+                    <strong id="summaryTotal">₹0</strong>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="primary-btn checkout-btn"
+                    id="checkoutBtn"
+                  >
+                    Proceed to Checkout
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </aside>
+              </div>
+
+              <div class="empty-state" id="cartEmptyState" hidden>
+                <div class="empty-state-icon">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <h3>Your cart is empty</h3>
+
+                <p>Add some products to your cart and they will appear here.</p>
+
+                <button
+                  type="button"
+                  class="primary-btn"
+                  data-customer-page="home"
+                >
+                  Continue Shopping
+                </button>
+              </div>
+            </section>
+
+            <!-- =========================================
+                         WISHLIST PAGE
+                    ========================================== -->
+
+            <section
+              id="customerWishlist"
+              class="customer-page"
+              data-page="wishlist"
+              hidden
+            >
+              <div class="page-header">
+                <div>
+                  <span class="section-kicker"> SAVED ITEMS </span>
+
+                  <h1>My Wishlist</h1>
+
+                  <p>Products you saved for later.</p>
+                </div>
+              </div>
+
+              <div class="product-grid" id="wishlistGrid">
+                <!-- Wishlist rendered by customer.js -->
+              </div>
+
+              <div class="empty-state" id="wishlistEmptyState">
+                <div class="empty-state-icon">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <h3>Your wishlist is empty</h3>
+
+                <p>Tap the heart on a product to save it here.</p>
+
+                <button
+                  type="button"
+                  class="primary-btn"
+                  data-customer-page="home"
+                >
+                  Explore Products
+                </button>
+              </div>
+            </section>
+
+            <!-- =========================================
+                         PROFILE PAGE
+                    ========================================== -->
+
+            <section
+              id="customerProfile"
+              class="customer-page"
+              data-page="profile"
+              hidden
+            >
+              <div class="page-header">
+                <div>
+                  <span class="section-kicker"> ACCOUNT </span>
+
+                  <h1>My Profile</h1>
+
+                  <p>Manage your ShopMax99 account.</p>
+                </div>
+              </div>
+
+              <div class="profile-card">
+                <div class="profile-avatar">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="profile-info">
+                  <h2 id="profileName">ShopMax User</h2>
+
+                  <p id="profileEmail">Not logged in</p>
+                </div>
+
+                <button
+                  type="button"
+                  class="secondary-btn"
+                  id="profileLoginBtn"
+                >
+                  Login / Sign Up
+                </button>
+              </div>
+            </section>
+          </main>
+        </div>
+      </div>
+
+      <!-- =====================================================
+             SELLER CENTER
+             Completely separate from Customer UI
+        ====================================================== -->
+
+      <div id="sellerApp" class="role-app role-workspace" hidden>
+        <header class="workspace-header">
+          <div class="workspace-brand">
+            <button
+              type="button"
+              class="workspace-back-btn"
+              data-role="customer"
+              title="Back to Customer"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div class="workspace-logo">
+              <span>ShopMax</span><strong>99</strong>
+            </div>
+
+            <div class="workspace-title">
+              <strong>Seller Center</strong>
+              <span>Manage your store</span>
+            </div>
+          </div>
+
+          <div class="workspace-header-actions">
+            <span class="seller-status-badge" id="sellerHeaderStatus">
+              Pending
+            </span>
+
+            <button
+              type="button"
+              class="workspace-user-btn"
+              id="sellerAccountBtn"
+            >
+              <i class="fa-regular fa-user"></i>
+              <span id="sellerHeaderName"> Seller </span>
+            </button>
+
+            <button
+              type="button"
+              class="workspace-logout-btn"
+              id="sellerLogoutBtn"
+              title="Logout"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <div class="workspace-layout">
+          <!-- SELLER SIDEBAR -->
+          <aside class="workspace-sidebar seller-sidebar" id="sellerSidebar">
+            <div class="workspace-sidebar-label">SELLER MENU</div>
+
+            <nav class="workspace-nav">
+              <button
+                type="button"
+                class="workspace-nav-item active"
+                data-seller-page="dashboard"
+              >
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="list-product"
+              >
+                <i class="fa-solid fa-plus"></i>
+                <span>List Product</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="approved"
+              >
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Approved Products</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="pending"
+              >
+                <i class="fa-solid fa-clock"></i>
+                <span>Pending Approval</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="rejected"
+              >
+                <i class="fa-solid fa-circle-xmark"></i>
+                <span>Rejected Products</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="edit-products"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Edit Products</span>
+              </button>
+
+              <div class="workspace-nav-divider"></div>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="orders"
+              >
+                <i class="fa-solid fa-box"></i>
+                <span>Orders</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="earnings"
+              >
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>Earnings</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-seller-page="profile"
+              >
+                <i class="fa-regular fa-user"></i>
+                <span>Seller Profile</span>
+              </button>
+            </nav>
+          </aside>
+
+          <!-- SELLER CONTENT -->
+          <main class="workspace-content" id="sellerContent">
+            <!-- SELLER JS WILL BUILD CONTENT HERE -->
+
+            <div id="sellerPages" class="workspace-pages"></div>
+          </main>
+        </div>
+      </div>
+
+      <!-- =====================================================
+             ADMIN CONTROL CENTER
+             Completely separate from Customer + Seller
+        ====================================================== -->
+
+      <div id="adminApp" class="role-app role-workspace" hidden>
+        <header class="workspace-header admin-header">
+          <div class="workspace-brand">
+            <button
+              type="button"
+              class="workspace-back-btn"
+              data-role="customer"
+              title="Back to Customer"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div class="workspace-logo">
+              <span>ShopMax</span><strong>99</strong>
+            </div>
+
+            <div class="workspace-title">
+              <strong>Admin Control Center</strong>
+              <span>Platform management</span>
+            </div>
+          </div>
+
+          <div class="workspace-header-actions">
+            <span class="admin-status-badge"> Administrator </span>
+
+            <button
+              type="button"
+              class="workspace-user-btn"
+              id="adminAccountBtn"
+            >
+              <i class="fa-solid fa-user-shield"></i>
+              <span>Admin</span>
+            </button>
+
+            <button
+              type="button"
+              class="workspace-logout-btn"
+              id="adminLogoutBtn"
+              title="Logout"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <div class="workspace-layout">
+          <!-- ADMIN SIDEBAR -->
+          <aside class="workspace-sidebar admin-sidebar" id="adminSidebar">
+            <div class="workspace-sidebar-label">ADMIN MENU</div>
+
+            <nav class="workspace-nav">
+              <button
+                type="button"
+                class="workspace-nav-item active"
+                data-admin-page="dashboard"
+              >
+                <i class="fa-solid fa-gauge-high"></i>
+                <span>Dashboard</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="seller-accounts"
+              >
+                <i class="fa-solid fa-store"></i>
+                <span>Seller Accounts</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="pending-sellers"
+              >
+                <i class="fa-solid fa-user-clock"></i>
+                <span>Pending Seller Approval</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="all-sellers"
+              >
+                <i class="fa-solid fa-users"></i>
+                <span>All Sellers</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="blocked-sellers"
+              >
+                <i class="fa-solid fa-user-lock"></i>
+                <span>Blocked / Held Sellers</span>
+              </button>
+
+              <div class="workspace-nav-divider"></div>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="all-products"
+              >
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>All Products</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="pending-products"
+              >
+                <i class="fa-solid fa-clock"></i>
+                <span>Pending Products</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="approved-products"
+              >
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Approved Products</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="rejected-products"
+              >
+                <i class="fa-solid fa-circle-xmark"></i>
+                <span>Rejected Products</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="product-edit"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Product Edit</span>
+              </button>
+
+              <div class="workspace-nav-divider"></div>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="orders"
+              >
+                <i class="fa-solid fa-box"></i>
+                <span>Orders</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="customers"
+              >
+                <i class="fa-solid fa-user-group"></i>
+                <span>Customers</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="reports"
+              >
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Reports</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="transactions"
+              >
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <span>Transactions</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="bank-account"
+              >
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Company Bank Account</span>
+              </button>
+
+              <button
+                type="button"
+                class="workspace-nav-item"
+                data-admin-page="settings"
+              >
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </button>
+
+              <div class="support-nav-divider">SUPPORT & ACCESS</div>
+
+              <button type="button" class="workspace-nav-item" data-admin-page="support-staff">
+                <i class="fa-solid fa-headset"></i>
+                <span>Support Staff</span>
+              </button>
+
+              <button type="button" class="workspace-nav-item" data-admin-page="pay-to-staff">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <span>Pay to Staff</span>
+              </button>
+
+              <button type="button" class="workspace-nav-item" data-admin-page="support-requests">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Support Requests</span>
+              </button>
+
+              <button type="button" class="workspace-nav-item" data-admin-page="support-audit">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Support Audit Log</span>
+              </button>
+            </nav>
+          </aside>
+
+          <!-- ADMIN CONTENT -->
+          <main class="workspace-content" id="adminContent">
+            <div id="adminPages" class="workspace-pages"></div>
+          </main>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           SELLER SUPPORT WORKSPACE
+      ====================================================== -->
+      <div id="sellerSupportApp" class="role-app role-workspace" hidden></div>
+
+      <!-- =====================================================
+           CUSTOMER SUPPORT WORKSPACE
+      ====================================================== -->
+      <div id="customerSupportApp" class="role-app role-workspace" hidden></div>
+    </div>
+
+    <!-- =========================================================
+         ACCOUNT DROPDOWN
+    ========================================================== -->
+
+    <div class="account-dropdown" id="accountDropdown" hidden>
+      <button type="button" data-account-action="login">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Login / Sign Up
+      </button>
+
+      <button type="button" data-account-action="profile">
+        <i class="fa-regular fa-user"></i>
+        My Profile
+      </button>
+
+      <div class="dropdown-divider"></div>
+
+      <button type="button" data-account-action="logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+      </button>
+    </div>
+
+    <!-- =========================================================
+         LOGIN / SIGNUP MODAL
+    ========================================================== -->
+
+    <div class="modal-overlay" id="authModal" hidden>
+      <div
+        class="modal-card auth-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authModalTitle"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="authModal"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="login-form-logo">
+          <img src="image/logo.max99black.jpg" alt="ShopMax99" />
+        </div>
+
+        <div class="modal-icon">
+          <i class="fa-regular fa-user"></i>
+        </div>
+
+        <h2 id="authModalTitle">Welcome to ShopMax99</h2>
+
+        <p class="modal-subtitle">Login or create your customer account.</p>
+
+        <form id="authForm">
+          <div class="form-group">
+            <label for="authName"> Full Name </label>
+
+            <input
+              type="text"
+              id="authName"
+              name="name"
+              placeholder="Enter your name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="authEmail"> Email </label>
+
+            <input
+              type="email"
+              id="authEmail"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="authPassword"> Password </label>
+
+            <input
+              type="password"
+              id="authPassword"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="primary-btn full-width">
+            Continue
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <p class="auth-note">Demo authentication for the frontend prototype.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         SELLER REGISTRATION MODAL
+    ========================================================== -->
+
+    <div class="modal-overlay" id="sellerRegisterModal" hidden>
+      <div
+        class="modal-card seller-register-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="sellerRegisterTitle"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="sellerRegisterModal"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-icon seller-modal-icon">
+          <i class="fa-solid fa-store"></i>
+        </div>
+
+        <h2 id="sellerRegisterTitle">Become a ShopMax99 Seller</h2>
+
+        <p class="modal-subtitle">
+          Submit your details. Your seller account will require admin approval.
+        </p>
+
+        <form id="sellerRegisterForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="sellerFullName"> Full Name </label>
+
+              <input
+                type="text"
+                id="sellerFullName"
+                name="fullName"
+                placeholder="Enter full name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="sellerShopName"> Shop Name </label>
+
+              <input
+                type="text"
+                id="sellerShopName"
+                name="shopName"
+                placeholder="Enter shop name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="sellerEmail"> Email </label>
+
+              <input
+                type="email"
+                id="sellerEmail"
+                name="email"
+                placeholder="seller@example.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="sellerPhone"> Phone Number </label>
+
+              <input
+                type="tel"
+                id="sellerPhone"
+                name="phone"
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="sellerPassword"> Password </label>
+
+              <input
+                type="password"
+                id="sellerPassword"
+                name="password"
+                placeholder="Create seller password"
+                minlength="6"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sellerAddress"> Address </label>
+
+            <textarea
+              id="sellerAddress"
+              name="address"
+              rows="3"
+              placeholder="Enter shop / business address"
+              required
+            ></textarea>
+          </div>
+
+          <div class="seller-rule-box">
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+              <strong>Seller pricing rule</strong>
+              <span>
+                Seller price cannot exceed ₹70. Customer selling price is fixed
+                at ₹99.
+              </span>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-btn full-width">
+            Submit Seller Registration
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+
+          <p class="seller-login-switch">
+            Already registered?
+            <button
+              type="button"
+              class="text-btn seller-login-inline-btn"
+              id="sellerLoginFromRegister"
+            >
+              Login here
+            </button>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         SELLER LOGIN MODAL
+    ========================================================== -->
+
+    <div class="modal-overlay" id="sellerLoginModal" hidden>
+      <div
+        class="modal-card auth-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="sellerLoginTitle"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="sellerLoginModal"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="login-form-logo">
+          <img src="image/logo.max99black.jpg" alt="ShopMax99" />
+        </div>
+
+        <div class="modal-icon seller-modal-icon">
+          <i class="fa-solid fa-store"></i>
+        </div>
+
+        <h2 id="sellerLoginTitle">Seller Login</h2>
+        <p class="modal-subtitle">
+          Login with your registered seller email and password.
+        </p>
+
+        <form id="sellerLoginForm">
+          <div class="form-group">
+            <label for="sellerLoginEmail">Email</label>
+            <input
+              type="email"
+              id="sellerLoginEmail"
+              name="email"
+              placeholder="seller@example.com"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="sellerLoginPassword">Password</label>
+            <input
+              type="password"
+              id="sellerLoginPassword"
+              name="password"
+              placeholder="Enter seller password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="primary-btn full-width">
+            Login to Seller Center
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <p class="seller-login-switch">
+          Not registered yet?
+          <button type="button" class="text-btn" id="sellerRegisterFromLogin">
+            Register as Seller
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         MASTER LOGIN PASSKEY GATE
+         Static passkey required before the internal login hub
+         becomes visible.
+    ========================================================== -->
+    <div class="modal-overlay" id="masterPasskeyModal" hidden>
+      <div class="modal-card auth-modal master-login-modal" role="dialog" aria-modal="true" aria-labelledby="masterPasskeyTitle">
+        <button type="button" class="modal-close" data-close-modal="masterPasskeyModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-icon"><i class="fa-solid fa-key"></i></div>
+        <h2 id="masterPasskeyTitle">Master Access</h2>
+        <p class="modal-subtitle">Enter the authorized master passkey to continue.</p>
+        <form id="masterPasskeyForm" autocomplete="off">
+          <div class="form-group">
+            <label for="masterPasskeyInput">Master Passkey</label>
+            <input id="masterPasskeyInput" name="passkey" type="password" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" autocomplete="off" required placeholder="Enter 10-digit passkey" />
+          </div>
+          <button type="submit" class="primary-btn full-width">Continue to Master Login <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <p class="auth-note">The Admin, Seller Support and Customer Support login options are available only after successful verification.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         MASTER LOGIN HUB
+         Admin + Seller Support + Customer Support
+    ========================================================== -->
+    <div class="modal-overlay" id="masterLoginModal" hidden>
+      <div class="modal-card auth-modal master-login-modal" role="dialog" aria-modal="true" aria-labelledby="masterLoginTitle">
+        <button type="button" class="modal-close" data-close-modal="masterLoginModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h2 id="masterLoginTitle">ShopMax99 Master Login</h2>
+        <p class="modal-subtitle">Choose the internal account area you need to access.</p>
+        <div class="master-login-options">
+          <button type="button" class="master-login-option" data-master-open="admin"><span class="master-login-icon"><i class="fa-solid fa-user-shield"></i></span><span><strong>Admin Login</strong><small>Full platform master control</small></span><i class="fa-solid fa-chevron-right"></i></button>
+          <button type="button" class="master-login-option" data-master-open="seller_support"><span class="master-login-icon"><i class="fa-solid fa-store"></i></span><span><strong>Seller Support Login</strong><small>Assist sellers with read-only lookup + approval requests</small></span><i class="fa-solid fa-chevron-right"></i></button>
+          <button type="button" class="master-login-option" data-master-open="customer_support"><span class="master-login-icon"><i class="fa-solid fa-headset"></i></span><span><strong>Customer Support Login</strong><small>Assist customers with account/order lookup + approval requests</small></span><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <p class="auth-note">Support usernames and passwords are created and controlled only by Admin.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         SUPPORT LOGIN MODAL
+    ========================================================== -->
+    <div class="modal-overlay" id="supportLoginModal" hidden>
+      <div class="modal-card auth-modal" role="dialog" aria-modal="true" aria-labelledby="supportLoginTitle">
+        <button type="button" class="modal-close" data-close-modal="supportLoginModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-icon"><i class="fa-solid fa-headset"></i></div>
+        <h2 id="supportLoginTitle">Support Login</h2>
+        <p class="modal-subtitle" id="supportLoginNote">Use the username and password provided by the ShopMax99 Admin.</p>
+        <form id="supportLoginForm">
+          <input type="hidden" id="supportLoginType" value="seller_support">
+          <div class="form-group"><label for="supportLoginUsername">Username</label><input id="supportLoginUsername" name="username" autocomplete="username" required placeholder="Support username"></div>
+          <div class="form-group"><label for="supportLoginPassword">Password</label><input id="supportLoginPassword" name="password" type="password" autocomplete="current-password" required placeholder="Support password"></div>
+          <button type="submit" class="primary-btn full-width">Login to Support Center <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <p class="auth-note">No self-registration. Only Admin can create or block support IDs.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         ADMIN LOGIN MODAL
+    ========================================================== -->
+
+    <div class="modal-overlay" id="adminLoginModal" hidden>
+      <div
+        class="modal-card auth-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="adminLoginTitle"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="adminLoginModal"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="login-form-logo">
+          <img src="image/logo.max99black.jpg" alt="ShopMax99" />
+        </div>
+
+        <div class="modal-icon">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+
+        <h2 id="adminLoginTitle">Admin Login</h2>
+        <p class="modal-subtitle">
+          Authorized administrators can access the ShopMax99 Admin Control
+          Center.
+        </p>
+
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label for="adminLoginEmail">Admin Email</label>
+            <input
+              type="email"
+              id="adminLoginEmail"
+              name="email"
+              placeholder="admin@shopmax99.com"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="adminLoginPassword">Password</label>
+            <input
+              type="password"
+              id="adminLoginPassword"
+              name="password"
+              placeholder="Enter admin password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="primary-btn full-width">
+            Login to Admin Center
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="admin-recovery-row">
+          <button type="button" class="text-btn" id="openAdminRecovery">Forgot login details? Change Admin Email / Password</button>
+        </div>
+
+        <p class="auth-note">
+          Admin recovery is available using the authorized recovery phone or email.
+        </p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         ADMIN OTP VERIFICATION
+         Frontend prototype challenge; backend OTP provider can replace this later.
+    ========================================================== -->
+    <div class="modal-overlay" id="adminOtpModal" hidden>
+      <div class="modal-card auth-modal" role="dialog" aria-modal="true" aria-labelledby="adminOtpTitle">
+        <button type="button" class="modal-close" data-close-modal="adminOtpModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h2 id="adminOtpTitle">Admin OTP Verification</h2>
+        <p class="modal-subtitle" id="adminOtpDestination">Enter the one-time verification code.</p>
+        <form id="adminOtpForm">
+          <div class="form-group">
+            <label for="adminOtpInput">6-Digit OTP</label>
+            <input id="adminOtpInput" name="otp" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="one-time-code" required placeholder="Enter OTP" />
+          </div>
+          <div class="admin-otp-demo" id="adminOtpDemo" hidden></div>
+          <button type="submit" class="primary-btn full-width">Verify OTP <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <button type="button" class="text-btn full-width" id="adminOtpResend">Resend OTP</button>
+        <p class="auth-note">Prototype mode: the OTP is generated locally. When backend authentication is connected, this same challenge will be delivered through the configured verified channel.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         ADMIN LOGIN RECOVERY
+         Recovery contacts are fixed in admin.js for this prototype.
+    ========================================================== -->
+    <div class="modal-overlay" id="adminRecoveryModal" hidden>
+      <div class="modal-card auth-modal" role="dialog" aria-modal="true" aria-labelledby="adminRecoveryTitle">
+        <button type="button" class="modal-close" data-close-modal="adminRecoveryModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-icon"><i class="fa-solid fa-key"></i></div>
+        <h2 id="adminRecoveryTitle">Admin Login Recovery</h2>
+        <p class="modal-subtitle">Verify your authorized recovery phone or email, then set new Admin login details.</p>
+
+        <form id="adminRecoveryVerifyForm">
+          <div class="form-group">
+            <label for="adminRecoveryContact">Recovery Phone or Email</label>
+            <input id="adminRecoveryContact" name="contact" autocomplete="off" required placeholder="Enter authorized phone or email" />
+          </div>
+          <button type="submit" class="primary-btn full-width">Verify Recovery Contact <i class="fa-solid fa-shield-check"></i></button>
+        </form>
+
+        <form id="adminRecoveryChangeForm" hidden class="admin-recovery-change-form">
+          <div class="form-group">
+            <label for="newAdminEmail">New Admin Email</label>
+            <input type="email" id="newAdminEmail" required placeholder="New admin email" autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="newAdminPassword">New Admin Password</label>
+            <input type="password" id="newAdminPassword" minlength="6" required placeholder="Minimum 6 characters" autocomplete="new-password" />
+          </div>
+          <div class="form-group">
+            <label for="confirmAdminPassword">Confirm New Password</label>
+            <input type="password" id="confirmAdminPassword" minlength="6" required placeholder="Repeat new password" autocomplete="new-password" />
+          </div>
+          <button type="submit" class="primary-btn full-width">Save New Admin Login</button>
+        </form>
+
+        <p class="auth-note">After changing the credentials, the recovery phone/email remains available for future recovery.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         PRODUCT DETAILS MODAL
+    ========================================================== -->
+
+    <div class="modal-overlay" id="productModal" hidden>
+      <div class="modal-card product-modal" role="dialog" aria-modal="true">
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="productModal"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div id="productModalContent">
+          <!-- Product details rendered by customer.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         TOAST
+    ========================================================== -->
+
+    <div
+      class="toast-container"
+      id="toastContainer"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
+    <!-- =========================================================
+         SITE MAINTENANCE SCREEN
+    ========================================================== -->
+    <section id="shopmax99MaintenanceScreen" class="shopmax99-maintenance-screen" hidden aria-live="polite">
+      <div class="maintenance-orbit maintenance-orbit-one"></div>
+      <div class="maintenance-orbit maintenance-orbit-two"></div>
+      <div class="maintenance-panel">
+        <div class="maintenance-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+        <span class="maintenance-kicker">SHOPMAX99 • TEMPORARILY OFFLINE</span>
+        <h1>We’ll be back shortly</h1>
+        <p>ShopMax99 is currently under scheduled maintenance. Customer and seller services are temporarily disabled while we make improvements.</p>
+        <div class="maintenance-progress" aria-hidden="true"><span></span></div>
+        <div class="maintenance-status"><i class="fa-solid fa-circle-notch fa-spin"></i><span>System maintenance in progress</span></div>
+        <button type="button" class="maintenance-access-btn" id="maintenanceStaffAccessBtn">
+          <i class="fa-solid fa-shield-halved"></i> Authorized Admin / Staff Access
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         MAINTENANCE PASSKEY MODAL
+    ========================================================== -->
+    <div class="modal-overlay" id="maintenancePasskeyModal" hidden>
+      <div class="modal-card auth-modal maintenance-passkey-modal" role="dialog" aria-modal="true" aria-labelledby="maintenancePasskeyTitle">
+        <button type="button" class="modal-close" data-close-modal="maintenancePasskeyModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h2 id="maintenancePasskeyTitle">Put Site Under Maintenance</h2>
+        <p class="modal-subtitle" id="maintenancePasskeyText">Enter the master passkey to disable customer and seller access.</p>
+        <form id="maintenancePasskeyForm" autocomplete="off">
+          <div class="form-group">
+            <label for="maintenancePasskeyInput">Master Passkey</label>
+            <input id="maintenancePasskeyInput" type="password" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" autocomplete="off" required placeholder="Enter 10-digit passkey" />
+          </div>
+          <button type="submit" class="primary-btn full-width">Confirm <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= SHOPMAX99 FOOTER ================= -->
+    <footer class="shopmax99-footer">
+      <div class="shopmax99-footer-main">
+        <!-- BRAND -->
+        <div class="shopmax99-footer-brand">
+          <img
+            src="image/logo.max99.png"
+            alt="ShopMax99"
+            class="shopmax99-footer-logo"
+          />
+
+          <p>Everything Under ₹99 — Shop smart, shop easy.</p>
+        </div>
+
+        <!-- QUICK LINKS -->
+        <div class="shopmax99-footer-column">
+          <h3>Quick Links</h3>
+
+          <a href="#" data-footer-action="home"> Home </a>
+
+          <a href="#" data-footer-action="products"> Products </a>
+
+          <a href="#" data-footer-action="cart"> Cart </a>
+
+          <a href="#" data-footer-action="orders"> My Orders </a>
+        </div>
+
+        <!-- CUSTOMER SUPPORT -->
+        <div class="shopmax99-footer-column">
+          <h3>Customer Support</h3>
+
+          <a href="#" data-footer-action="help"> Help Center </a>
+
+          <a href="#" data-footer-action="contact"> Contact Us </a>
+
+          <a href="#" data-footer-action="shipping"> Shipping & Delivery </a>
+
+          <a href="#" data-footer-action="returns"> Return & Refund Policy </a>
+
+          <a href="#" data-footer-action="privacy"> Privacy Policy </a>
+        </div>
+
+        <!-- SELL WITH US / MASTER ACCESS -->
+        <div class="shopmax99-footer-column">
+          <h3>Sell With Us</h3>
+
+          <a href="#" data-footer-action="seller-register"> Become a Seller </a>
+          <a href="#" data-footer-action="seller-login"> Seller Login </a>
+          <a href="#" data-footer-action="master-login"> Master Login </a>
+          <a href="#" data-footer-action="seller-terms"> Seller Terms </a>
+        </div>
+
+        <!-- PAYMENTS -->
+        <div class="shopmax99-footer-payments">
+          <h3>Secure Payments</h3>
+
+          <div class="shopmax99-payment-list">
+            <span>UPI</span>
+            <span>💳 Cards</span>
+            <span>🏦 Net Banking</span>
+            <span>💵 Cash on Delivery</span>
+          </div>
+
+          <h3 class="shopmax99-safe-title">Safe & Secure Shopping</h3>
+
+          <div class="shopmax99-safe-list">
+            <span>🔒 Secure Checkout</span>
+            <span>✓ Verified Sellers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM -->
+      <div class="shopmax99-footer-bottom">
+        <p>
+          © <span id="shopmax99FooterYear"></span>
+          ShopMax99. All Rights Reserved.
+        </p>
+
+        <div class="shopmax99-footer-bottom-links">
+          <a href="#" data-footer-action="terms"> Terms & Conditions </a>
+
+          <a href="#" data-footer-action="privacy"> Privacy Policy </a>
+
+          <a href="#" data-footer-action="returns"> Refund Policy </a>
+        </div>
+      </div>
+    </footer><!-- =========================================================
+         SCRIPTS
+    ========================================================== -->
+
+    <!-- Common application -->
+    <script src="app.js?v=20260925-05"></script>
+    <script src="customer.js?v=20260925-05"></script>
+    <script src="seller.js?v=20260925-05"></script>
+    <script src="admin.js?v=20260925-05"></script>
+    <script src="bank.js?v=20260925-05"></script>
+    <script src="support.js?v=20260925-05"></script>
+    <script src="bootstrap.js?v=20260925-05"></script>
+
+    <!-- =========================================================
+         SHOPMAX99 ROLE AUTHENTICATION BRIDGE
+         Seller registration/login + Admin login.
+         Frontend prototype only.
+    ========================================================== --></body>
+</html>
